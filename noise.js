@@ -1,6 +1,4 @@
 
-
-
 function setImage(){
     let imageData = context.createImageData(w, h)
 
@@ -17,20 +15,19 @@ function setImage(){
         return Math.floor(Math.random() * 255); 
     }
     
-    var cellsize = 1;
-    for (var i = 0; i < imageData.width; i += cellsize)
+    let cellsize = 1;
+    for (let i = 0; i < imageData.width; i += cellsize)
     {
-        for (var j = 0; j < imageData.height; j += cellsize)
+        for (let j = 0; j < imageData.height; j += cellsize)
         {
-            var diff = ((j / cellsize) % 2) * cellsize;
-            for (var x = i + diff; (x < i + diff + cellsize) && (x < imageData.width); x++)
+            let diff = ((j / cellsize) % 2) * cellsize;
+            for ( x = i + diff; (x < i + diff + cellsize) && (x < imageData.width); x++)
             {
-                for (var y = j; y < j + cellsize; y++)
+                for (let y = j; y < j + cellsize; y++)
                 {
-                    value = randomBool() ? 255 : 0
+                    // value = randomBool() ? 255 : 0
                     value = getClosestSpot(x, y)
-                    
-                    setPixel(imageData, x, y, value, value, value, 255);
+                    setPixel(imageData, x, y, 256-value, x, y, 256);
                 }
             }
         }
@@ -45,7 +42,7 @@ function convertValue(value){}
 setImage()
 
 // setInterval(() => {
-    // moveSpots()
+//     moveSpots()
 // }, 100);
 
 // setInterval(() => {

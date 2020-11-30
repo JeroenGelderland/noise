@@ -30,7 +30,7 @@ class Spot{
 }
 
 let spots = []
-for(i= 10;i >= 0; i--){
+for(i= 5;i >= 0; i--){
     spots.push(new Spot())    
 }
 
@@ -54,7 +54,9 @@ function getClosestSpot(x,y){
 function getShortedDistance(spot, x, y){
     dx = Math.abs(spot.x - x)
     dy = Math.abs(spot.y - y)
-    return dx > dy ? dx : dy
+    // return dx > dy ? dx : dy
+    return Math.sqrt(Math.pow(dx,2) + Math.pow(dy,2))
+
     
 }
 
