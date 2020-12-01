@@ -27,7 +27,10 @@ function setImage(){
                 {
                     // value = randomBool() ? 255 : 0
                     value = getClosestSpot(x, y)
-                    setPixel(imageData, x, y, 256-value, x, y, 256);
+
+                    setPixel(imageData, x, y, 256 - value* .5 , 256 -  value , 256 -  value * 2, 256)
+                    // setPixel(imageData, x, y, value, value * .3, Math.tan(value)*10, 256)
+                    // setPixel(imageData, x, y, 256-value, x, y, 256);
                 }
             }
         }
