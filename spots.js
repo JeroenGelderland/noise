@@ -1,3 +1,5 @@
+const AMOUNT_OF_SPOTS = 6
+
 class Spot{
     constructor(color){
         this.xvelocity = 0
@@ -30,7 +32,7 @@ class Spot{
 }
 
 let spots = []
-for(i= 5;i >= 0; i--){
+for(i=0;i < AMOUNT_OF_SPOTS; i++){
     spots.push(new Spot())    
 }
 
