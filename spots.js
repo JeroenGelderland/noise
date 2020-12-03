@@ -1,5 +1,3 @@
-const AMOUNT_OF_SPOTS = 6
-
 class Spot{
     constructor(image){
         this.image = image
@@ -7,12 +5,14 @@ class Spot{
         this.yvelocity = 0
         this.x = random(image.heigth)
         this.y = random(image.width)
-        this.color = {r:randomBool(),g:randomBool(),b:randomBool()}
+        this.color = `rgb(${Math.round(random(256))} ${Math.round(random(256))} ${Math.round(random(256))})`
+        // console.log(this.color)
     }
 
     draw(){
         this.image.context.beginPath();
-        this.image.context.arc(this.x, this.y, 1.5, 0, 2 * Math.PI);
+        this.image.context.arc(this.x, this.y, 5.5, 0, 2 * Math.PI);
+        this.image.context.fillStyle = this.color
         this.image.context.fill()
     }
 
@@ -23,11 +23,17 @@ class Spot{
     }
 
     move(){
-        this.xvelocity = randomBool() ? Math.random() : Math.random() * -1
-        this.yvelocity = randomBool() ? Math.random() : Math.random() * -1
+        this.xvelocity += randomBool() ? random(2) : random(2) * -1
+        this.yvelocity += randomBool() ? random(2) : random(2) * -1
+
+        this.xvelocity = this.xvelocity < 3 ? this.xvelocity : 3
+        this.yvelocity = this.yvelocity < 3 ? this.yvelocity : 3
+        
+        this.xvelocity = this.x <= this.image.heigth && this.x >= 0 ? this.xvelocity : this.xvelocity * -1
+        this.yvelocity = this.y <= this.image.width && this.y >= 0 ? this.yvelocity : this.yvelocity * -1
+
         this.x += this.xvelocity
         this.y += this.yvelocity
-        // console.log(JSON.stringify(this))        
     }
 
     getDistance(x, y){
@@ -45,7 +51,7 @@ function random(max){
 }
 
 function randomBool(){
-    return Math.random() > .5
+    return Math.round(Math.random()*10) % 2 == 0
 }
 
 function moveSpots(){

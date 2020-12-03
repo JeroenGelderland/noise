@@ -1,5 +1,6 @@
+let image = new Image(300,300,2)
+image.MoveSpots()
 
-new Image(600,600,20)
 
 // function setImage(){
 

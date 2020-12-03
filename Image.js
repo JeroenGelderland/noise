@@ -10,6 +10,16 @@ class Image{
         this.setImage()
     }
 
+    MoveSpots(){
+        setInterval(() => {
+            this.spots.forEach(spot => {
+                spot.move()
+                // spot.draw()
+            })
+            image.setImage()
+        }, 100);
+    }
+
     createCanvas(){
         this.canvas = document.createElement('canvas')
         this.canvas.height = this.heigth
@@ -47,13 +57,8 @@ class Image{
                         // this.setPixel(x, y, 256 - value* .5 , 256 -  value , 256 -  value * 2, 256)
                         // this.setPixel(x, y, value,(value), this.width - y, 256)
                         // this.setPixel(x, y, value, value * .3, Math.tan(value)*10, 256)
-                        // this.setPixel(x, y, 256-value, x, y, 256);
-                        this.setPixel(x, y, (100 * y / 256), (100 * x / 256),value, 256);
-
-                        let r = this.closestSpot.color.r ? value : value
-                        let g = this.closestSpot.color.g ? value : value
-                        let b = this.closestSpot.color.b ? value : value
-                        
+                        this.setPixel(x, y, 256-value, x, y, 256);
+                        // this.setPixel(x, y, (100 * y / 256), (100 * x / 256),value, 256);                      
 
                     }
                 }
