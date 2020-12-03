@@ -1,19 +1,19 @@
 const AMOUNT_OF_SPOTS = 6
 
 class Spot{
-    constructor(color){
+    constructor(image){
+        this.image = image
         this.xvelocity = 0
         this.yvelocity = 0
-        this.x = random(h)
-        this.y = random(w)
-        this.color = color
+        this.x = random(image.heigth)
+        this.y = random(image.width)
+        this.color = {r:randomBool(),g:randomBool(),b:randomBool()}
     }
 
     draw(){
-        context.beginPath();
-        context.arc(this.x, this.y, 1.5, 0, 2 * Math.PI);
-        context.fillStyle = this.color
-        context.fill()
+        this.image.context.beginPath();
+        this.image.context.arc(this.x, this.y, 1.5, 0, 2 * Math.PI);
+        this.image.context.fill()
     }
 
     setPos(x,y){
@@ -29,40 +29,16 @@ class Spot{
         this.y += this.yvelocity
         // console.log(JSON.stringify(this))        
     }
-}
 
-let spots = []
-for(i=0;i < AMOUNT_OF_SPOTS; i++){
-    s = new Spot()
-    s.setPos(i,paraboolValue(i))
-    spots.push(new Spot())    
-}
-
-// spots.forEach(spot => {
-//     spot.draw()
-// })
-
-function getClosestSpot(x,y){
-    closestSpot = spots[0]
-    closestValue = getShortedDistance(closestSpot, x, y)
-    spots.forEach(spot => {
-        spotValue = getShortedDistance(spot, x, y)
-        if(closestValue > spotValue){
-            closestValue = spotValue
-            closestSpot = spot
-        }
-    })
-    return closestValue
-}
-
-function getShortedDistance(spot, x, y){
-    dx = Math.abs(spot.x - x)
-    dy = Math.abs(spot.y - y)
-    // return dx > dy ? dx : dy
-    return Math.sqrt(Math.pow(dx,2) + Math.pow(dy,2))
-
+    getDistance(x, y){
+        let dx = Math.abs(this.x - x)
+        let dy = Math.abs(this.y - y)
+        return Math.sqrt(Math.pow(dx,2) + Math.pow(dy,2))
     
+        
+    }
 }
+
 
 function random(max){
     return Math.floor(Math.random() * max); 
