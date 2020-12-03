@@ -2,6 +2,11 @@ let image = new Image(300,300,2)
 image.MoveSpots()
 
 
+function r(x){
+    value = Math.random() * x + 100
+    console.log(value)
+}
+r(156)
 // function setImage(){
 
 //     let imageData = context.createImageData(w, h)

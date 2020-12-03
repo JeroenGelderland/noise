@@ -53,11 +53,15 @@ class Image{
                         // value = randomBool() ? 255 : 0
                         let value = this.getDistanceToClosestSpot(x, y)
     
-                        //hier zijn wat verschillene settings 
-                        // this.setPixel(x, y, 256 - value* .5 , 256 -  value , 256 -  value * 2, 256)
+                        // this.setPixel(x, y, (256 - value*.5) , 256 -  value , 256 -  value * 2, 256)
+                        // this.setPixel(x, y, value, value , value, 256)
                         // this.setPixel(x, y, value,(value), this.width - y, 256)
                         // this.setPixel(x, y, value, value * .3, Math.tan(value)*10, 256)
+                        // this.setPixel(x, y,  Math.tan(value)*10,  Math.tan(value)*10, Math.tan(value)*10, 256)
+                        //  this.setPixel(x, y, this.closestSpot.r, this.closestSpot.b, this.closestSpot.g, 256);
+
                         this.setPixel(x, y, 256-value, x, y, 256);
+                        // this.setPixel(x, y, 256-value, 256, y, 256);
                         // this.setPixel(x, y, (100 * y / 256), (100 * x / 256),value, 256);                      
 
                     }

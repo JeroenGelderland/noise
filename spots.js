@@ -6,12 +6,16 @@ class Spot{
         this.x = random(image.heigth)
         this.y = random(image.width)
         this.color = `rgb(${Math.round(random(256))} ${Math.round(random(256))} ${Math.round(random(256))})`
+        this.r = Math.round(random(106)+ 150)
+        this.g = Math.round(random(106) + 150)
+        this.b = Math.round(random(106) +150)
+
         // console.log(this.color)
     }
 
     draw(){
         this.image.context.beginPath();
-        this.image.context.arc(this.x, this.y, 5.5, 0, 2 * Math.PI);
+        this.image.context.arc(this.x, this.y, 1.5, 0, 2 * Math.PI);
         this.image.context.fillStyle = this.color
         this.image.context.fill()
     }
