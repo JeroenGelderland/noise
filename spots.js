@@ -33,12 +33,14 @@ class Spot{
 
 let spots = []
 for(i=0;i < AMOUNT_OF_SPOTS; i++){
+    s = new Spot()
+    s.setPos(i,paraboolValue(i))
     spots.push(new Spot())    
 }
 
-spots.forEach(spot => {
-    spot.draw()
-})
+// spots.forEach(spot => {
+//     spot.draw()
+// })
 
 function getClosestSpot(x,y){
     closestSpot = spots[0]
@@ -75,5 +77,3 @@ function moveSpots(){
         spot.move()
     })
 }
-
-getClosestSpot(50,50)

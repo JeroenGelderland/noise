@@ -28,8 +28,17 @@ function setImage(){
                     // value = randomBool() ? 255 : 0
                     value = getClosestSpot(x, y)
 
+                    if(max_val < value){
+                        max_val = value
+                    }
+                    else{
+                        min_val = min_val > value ? value : min_val
+                    }
+
                     //hier zijn wat verschillene settings 
-                    setPixel(imageData, x, y, 256 - value* .5 , 256 -  value , 256 -  value * 2, 256)
+                    // setPixel(imageData, x, y, 256 - value* .5 , 256 -  value , 256 -  value * 2, 256)
+                    setPixel(imageData, x, y, value,(value), w - y, 256)
+                    // setPixel(imageData, x, y, 256 - value* .5 , 256 -  value , 256 -  value * 2, 256)
                     // setPixel(imageData, x, y, value, value * .3, Math.tan(value)*10, 256)
                     // setPixel(imageData, x, y, 256-value, x, y, 256);
                 }
@@ -42,8 +51,12 @@ function setImage(){
 
 function convertValue(value){}
 
+max_val = getClosestSpot(0, 0)
+min_val = getClosestSpot(0, 0)
 
 setImage()
+
+document.querySelector("p").innerText = `min: ${min_val}             \nmax: ${max_val}`
 
 // setInterval(() => {
 //     moveSpots()

@@ -8,3 +8,7 @@ body{
     margin: 0;
     background: rgb(32, 32, 32);
 }
+
+p{
+    padding: 5vw;
+}
