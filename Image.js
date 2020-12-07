@@ -7,16 +7,17 @@ class Image{
 
         this.createCanvas()
         this.generateSpots()
-        this.setImage()
+        // this.setImage()
     }
 
     MoveSpots(){
         setInterval(() => {
+            image.setImage()
+
             this.spots.forEach(spot => {
                 spot.move()
                 // spot.draw()
             })
-            image.setImage()
         }, 100);
     }
 
@@ -55,7 +56,6 @@ class Image{
     
                         // this.setPixel(x, y, (256 - value*.5) , 256 -  value , 256 -  value * 2, 256)
                         // this.setPixel(x, y, value, value , value, 256)
-                        // this.setPixel(x, y, value,(value), this.width - y, 256)
                         // this.setPixel(x, y, value, value * .3, Math.tan(value)*10, 256)
                         // this.setPixel(x, y,  Math.tan(value)*10,  Math.tan(value)*10, Math.tan(value)*10, 256)
                         //  this.setPixel(x, y, this.closestSpot.r, this.closestSpot.b, this.closestSpot.g, 256);

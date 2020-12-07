@@ -1,12 +1,15 @@
-let image = new Image(300,300,2)
-image.MoveSpots()
+let image = new Image(300,300,1)
+// image.MoveSpots()
 
-
-function r(x){
-    value = Math.random() * x + 100
-    console.log(value)
+for(i = 0; i < 100; i++){
+    new FormulaSpot(new Image(100,100,1))
 }
-r(156)
+
+// function r(x){
+//     value = Math.random() * x + 100
+//     console.log(value)
+// }
+// r(156)
 // function setImage(){
 
 //     let imageData = context.createImageData(w, h)

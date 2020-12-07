@@ -63,3 +63,14 @@ function moveSpots(){
         spot.move()
     })
 }
+
+class FormulaSpot extends Spot{
+    
+    constructor(image){
+        super(image)
+        // console.log(this.x * 2 - 1 - this.y - 1)
+        // console.log(super.x * 2 - 1 - super.y - 1)
+        // xn=x2n−1−y2n−1+a en yn=2ixn−1yn−1+b
+    }
+    
+}
