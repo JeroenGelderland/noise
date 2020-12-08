@@ -1,9 +1,9 @@
-let image = new Image(300,300,1)
+let image = new Image(300,300,6)
 // image.MoveSpots()
 
-for(i = 0; i < 100; i++){
-    new FormulaSpot(new Image(100,100,1))
-}
+// for(i = 0; i < 100; i++){
+//     new FormulaSpot(new Image(100,100,1))
+// }
 
 // function r(x){
 //     value = Math.random() * x + 100

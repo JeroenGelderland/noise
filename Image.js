@@ -7,7 +7,7 @@ class Image{
 
         this.createCanvas()
         this.generateSpots()
-        // this.setImage()
+        this.setImage()
     }
 
     MoveSpots(){
@@ -52,7 +52,7 @@ class Image{
                     for (let y = j; y < j + cellsize; y++)
                     {
                         // value = randomBool() ? 255 : 0
-                        let value = this.getDistanceToClosestSpot(x, y)
+                        let values = this.getDistanceToSpots(x, y)
     
                         // this.setPixel(x, y, (256 - value*.5) , 256 -  value , 256 -  value * 2, 256)
                         // this.setPixel(x, y, value, value , value, 256)
@@ -60,7 +60,10 @@ class Image{
                         // this.setPixel(x, y,  Math.tan(value)*10,  Math.tan(value)*10, Math.tan(value)*10, 256)
                         //  this.setPixel(x, y, this.closestSpot.r, this.closestSpot.b, this.closestSpot.g, 256);
 
-                        this.setPixel(x, y, 256-value, x, y, 256);
+                        // this.setPixel(x, y, 256-values[0], x, y, 256);
+                        // this.setPixel(x, y, 256 - values[0], 256 - values[1], 256 - values[2], 256);
+                        this.setPixel(x, y, 256 - values[0] + values[4], 256 - (values[0] + values[1]),(x / values[4]) * values[1], 256);
+
                         // this.setPixel(x, y, 256-value, 256, y, 256);
                         // this.setPixel(x, y, (100 * y / 256), (100 * x / 256),value, 256);                      
 
@@ -79,17 +82,28 @@ class Image{
         this.closestSpot = this.spots[0];
     }
 
-    getDistanceToClosestSpot(x,y){
-        let closestValue = this.closestSpot.getDistance( x, y)
+    getDistanceToSpots(x,y){
+        let distances = []
+        distances.push(this.spots[0].getDistance(x, y))
+
         this.spots.forEach(spot => {
+            let placed = false
             let spotValue = spot.getDistance(x, y)
-            if(closestValue > spotValue){
-                closestValue = spotValue
-                this.closestSpot = spot
+            for(let i = 0; i < distances.length; i++){
+                if(distances[i] > spotValue){
+                    distances.splice(i, 0,spotValue)
+                    placed = true
+                    break
+                }
             }
+            if(!placed){
+                distances[distances.length] = spotValue
+            }
+
         })
-        return closestValue
+        return distances
     }
 
 }
+
 
