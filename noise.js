@@ -1,4 +1,4 @@
-let image = new Image(300,300,6)
+let image = new Image(300,300,5)
 // image.MoveSpots()
 
 // for(i = 0; i < 100; i++){

@@ -8,6 +8,8 @@ class Image{
         this.createCanvas()
         this.generateSpots()
         this.setImage()
+        this.MoveSpots()
+
     }
 
     MoveSpots(){
@@ -51,21 +53,21 @@ class Image{
                 {
                     for (let y = j; y < j + cellsize; y++)
                     {
-                        // value = randomBool() ? 255 : 0
+                        // values[0]= randomBool() ? 255 : 0
                         let values = this.getDistanceToSpots(x, y)
     
-                        // this.setPixel(x, y, (256 - value*.5) , 256 -  value , 256 -  value * 2, 256)
-                        // this.setPixel(x, y, value, value , value, 256)
-                        // this.setPixel(x, y, value, value * .3, Math.tan(value)*10, 256)
-                        // this.setPixel(x, y,  Math.tan(value)*10,  Math.tan(value)*10, Math.tan(value)*10, 256)
+                        // this.setPixel(x, y, (256 - values[0]*.5) , 256 -  values[0], 256 -  values[0]* 2, 256)
+                        //  this.setPixel(x, y, values[0], values[0], values[0], 256)
+                        //  this.setPixel(x, y, values[0], values[0]* .3, Math.tan(values[0])*10, 256)
+                        //  this.setPixel(x, y,  Math.tan(values[0])*10,  Math.tan(values[0])*10, Math.tan(values[0])*10, 256)
                         //  this.setPixel(x, y, this.closestSpot.r, this.closestSpot.b, this.closestSpot.g, 256);
 
-                        // this.setPixel(x, y, 256-values[0], x, y, 256);
+                        this.setPixel(x, y, 256-values[0], x, y, 256);
                         // this.setPixel(x, y, 256 - values[0], 256 - values[1], 256 - values[2], 256);
-                        this.setPixel(x, y, 256 - values[0] + values[4], 256 - (values[0] + values[1]),(x / values[4]) * values[1], 256);
+                        // this.setPixel(x, y, 256 - values[0] + values[4], 256 - (values[0] + values[1]),(x / values[4]) * values[1], 256);
 
-                        // this.setPixel(x, y, 256-value, 256, y, 256);
-                        // this.setPixel(x, y, (100 * y / 256), (100 * x / 256),value, 256);                      
+                        // this.setPixel(x, y, 256-values[0], 256, y, 256);
+                        //  this.setPixel(x, y, (100 * y / 256), (100 * x / 256),values[0], 256);                      
 
                     }
                 }
